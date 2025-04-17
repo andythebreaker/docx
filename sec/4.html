@@ -40,12 +40,18 @@
 <body>
   <!--區域四 主HTML 區域起始-->
   <!--本區HTML概述，一個docx主容器，一個loader，在docx主容器尚未渲染完成前，UI轉轉轉-->
-  <script>var docxready = false;</script>
+  <script>
+    // Ensure currentStage3index is defined before any other scripts
+    window.currentStage3index = 1;
+  </script>
   <div id="loader" class="ui active inverted dimmer full-page-loader">
     <div class="ui large text loader">Loading</div>
   </div>
   <div id="container" style="display: none;"></div>
-   <!--區域四 主HTML 區域結束            以下的部分不重要，真的不重要 一大段垃圾HTML 就是裝飾品          (區域:裝飾HTML 起始)                                   -->
+  <!-- Add left and right menu wrappers required by JS -->
+  <div id="leftMenuWrapper" class="menu-wrapper"><div id="leftMenu"></div><div id="leftMenuToggle"></div></div>
+  <div id="rightMenuWrapper" class="menu-wrapper"><div id="rightMenu"></div><div id="rightMenuToggle"></div></div>
+  <!--區域四 主HTML 區域結束            以下的部分不重要，真的不重要 一大段垃圾HTML 就是裝飾品          (區域:裝飾HTML 起始)                                   -->
   <div id="myFoot" class="ui  vertical footer segment" style="display: none;">
     <div class="ui center aligned container">
       <div class="ui stackable grid">
@@ -79,7 +85,7 @@
     </div>
   </div>
 <!--  (區域:裝飾HTML 結束)       -->
-  
+
   <script>
     fetch('/docxView/兒科.docx')
       .then(response => response.blob())
